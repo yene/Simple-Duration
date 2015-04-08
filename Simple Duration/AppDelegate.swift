@@ -51,12 +51,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var duration: NSTimeInterval! = startTime?.timeIntervalSinceNow
     duration = duration * -1
+    //duration = 3+4*60+5*60*60
     
-    let min: Double = duration / 60    // divide two longs, truncates
-    let sec: Double = duration % 60    // remainder of long divide
-    let str = NSString(format: "%02d:%02d", Int(min), Int(sec))
+    let hrs: Double = duration / (60*60)
+    let min: Double = duration / 60
+    let sec: Double = duration % 60
+    let formattedDuration = NSString(format: "%02d:%02d:%02d", Int(hrs), Int(min), Int(sec))
     
-    NSLog("duration %@", str)
+    let formatter = NSDateFormatter()
+    formatter.dateFormat = "dd.MM.yyyy" //"yyyy-MM-dd 'at' HH:mm"
+    let today = formatter.stringFromDate(NSDate())
+    
+    let str = NSString(format: "Worked %@ at %@", formattedDuration, today)
+    
+    println(str)
+
+    
   }
 
 }
