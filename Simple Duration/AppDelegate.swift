@@ -65,8 +65,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let str = NSString(format: "Worked %@ at %@", formattedDuration, today)
     
     println(str)
-
     
+    let pboard = NSPasteboard.generalPasteboard()
+    pboard.declareTypes([NSStringPboardType], owner: nil)
+    pboard.setString(str, forType: NSStringPboardType)
   }
 
 }
