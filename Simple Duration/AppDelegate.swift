@@ -24,7 +24,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
   
   override func awakeFromNib() {
-    self.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1.0)
+
+    // can't access the constant inside NSStatusBar.h
+    //println(AppKit.NSVariableStatusItemLength)
+    let NSVariableStatusItemLength: CGFloat = -1.0;
+
+    self.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
     self.button = self.statusItem?.button
     self.button?.title = "Start"
     self.button?.action = "start:"
