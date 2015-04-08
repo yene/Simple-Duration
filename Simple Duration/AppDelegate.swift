@@ -60,7 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     formatter.dateFormat = "dd/MM/yyyy" //"yyyy-MM-dd 'at' HH:mm"
     let today = formatter.stringFromDate(NSDate())
     
-    let str = NSString(format: "%@\t%@\n", today, formattedDuration)
+    let str = NSString(format: "%@\t%@", today, formattedDuration)
     
     let pboard = NSPasteboard.generalPasteboard()
     pboard.declareTypes([NSStringPboardType], owner: nil)
