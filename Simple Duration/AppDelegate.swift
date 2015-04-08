@@ -44,8 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   @IBAction func stop(sender : AnyObject) {
     
-    button?.title = "Start"
-    button?.action = "start:"
+    button?.enabled = false
     
     var duration: NSTimeInterval! = startTime?.timeIntervalSinceNow
     duration = duration * -1
@@ -65,6 +64,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let pboard = NSPasteboard.generalPasteboard()
     pboard.declareTypes([NSStringPboardType], owner: nil)
     pboard.setString(str, forType: NSStringPboardType)
+    
+    button?.title = "Copied to Clipboard"
+    var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+      self.button?.enabled = true
+      self.button?.title = "Start"
+      self.button?.action = "start:"
+    })
+    
   }
 
 }
