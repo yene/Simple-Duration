@@ -35,7 +35,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
   
   @IBAction func start(sender : AnyObject) {
-    println("start pressed")
     
     button?.title = "Stop"
     button?.action = "stop:"
@@ -44,27 +43,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   @IBAction func stop(sender : AnyObject) {
-    println("stop pressed")
     
     button?.title = "Start"
     button?.action = "start:"
     
     var duration: NSTimeInterval! = startTime?.timeIntervalSinceNow
     duration = duration * -1
-    //duration = 3+4*60+5*60*60
+    //duration = 60*10 //3+4*60+5*60*60
     
     let hrs: Double = duration / (60*60)
     let min: Double = duration / 60
-    let sec: Double = duration % 60
-    let formattedDuration = NSString(format: "%02d:%02d:%02d", Int(hrs), Int(min), Int(sec))
+    //let sec: Double = duration % 60
+    let formattedDuration = NSString(format: "%02dh %02dm", Int(hrs), Int(min))
     
     let formatter = NSDateFormatter()
-    formatter.dateFormat = "dd.MM.yyyy" //"yyyy-MM-dd 'at' HH:mm"
+    formatter.dateFormat = "dd/MM/yyyy" //"yyyy-MM-dd 'at' HH:mm"
     let today = formatter.stringFromDate(NSDate())
     
-    let str = NSString(format: "Worked %@ at %@", formattedDuration, today)
-    
-    println(str)
+    let str = NSString(format: "%@\t%@\n", today, formattedDuration)
     
     let pboard = NSPasteboard.generalPasteboard()
     pboard.declareTypes([NSStringPboardType], owner: nil)
