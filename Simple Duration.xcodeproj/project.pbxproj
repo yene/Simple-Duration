@@ -10,18 +10,7 @@
 		AE5178811AD52E9400FCD618 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5178801AD52E9400FCD618 /* AppDelegate.swift */; };
 		AE5178831AD52E9400FCD618 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE5178821AD52E9400FCD618 /* Images.xcassets */; };
 		AE5178861AD52E9400FCD618 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE5178841AD52E9400FCD618 /* MainMenu.xib */; };
-		AE5178921AD52E9400FCD618 /* Simple_DurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5178911AD52E9400FCD618 /* Simple_DurationTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		AE51788C1AD52E9400FCD618 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AE5178731AD52E9400FCD618 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AE51787A1AD52E9400FCD618;
-			remoteInfo = "Simple Duration";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AE51787B1AD52E9400FCD618 /* Simple Duration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Duration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,20 +18,10 @@
 		AE5178801AD52E9400FCD618 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE5178821AD52E9400FCD618 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AE5178851AD52E9400FCD618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		AE51788B1AD52E9400FCD618 /* Simple DurationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simple DurationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE5178901AD52E9400FCD618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE5178911AD52E9400FCD618 /* Simple_DurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_DurationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AE5178781AD52E9400FCD618 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE5178881AD52E9400FCD618 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -56,7 +35,6 @@
 			isa = PBXGroup;
 			children = (
 				AE51787D1AD52E9400FCD618 /* Simple Duration */,
-				AE51788E1AD52E9400FCD618 /* Simple DurationTests */,
 				AE51787C1AD52E9400FCD618 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				AE51787B1AD52E9400FCD618 /* Simple Duration.app */,
-				AE51788B1AD52E9400FCD618 /* Simple DurationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,23 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				AE51787F1AD52E9400FCD618 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AE51788E1AD52E9400FCD618 /* Simple DurationTests */ = {
-			isa = PBXGroup;
-			children = (
-				AE5178911AD52E9400FCD618 /* Simple_DurationTests.swift */,
-				AE51788F1AD52E9400FCD618 /* Supporting Files */,
-			);
-			path = "Simple DurationTests";
-			sourceTree = "<group>";
-		};
-		AE51788F1AD52E9400FCD618 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AE5178901AD52E9400FCD618 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -126,24 +86,6 @@
 			productReference = AE51787B1AD52E9400FCD618 /* Simple Duration.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AE51788A1AD52E9400FCD618 /* Simple DurationTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AE5178981AD52E9400FCD618 /* Build configuration list for PBXNativeTarget "Simple DurationTests" */;
-			buildPhases = (
-				AE5178871AD52E9400FCD618 /* Sources */,
-				AE5178881AD52E9400FCD618 /* Frameworks */,
-				AE5178891AD52E9400FCD618 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AE51788D1AD52E9400FCD618 /* PBXTargetDependency */,
-			);
-			name = "Simple DurationTests";
-			productName = "Simple DurationTests";
-			productReference = AE51788B1AD52E9400FCD618 /* Simple DurationTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -155,10 +97,6 @@
 				TargetAttributes = {
 					AE51787A1AD52E9400FCD618 = {
 						CreatedOnToolsVersion = 6.2;
-					};
-					AE51788A1AD52E9400FCD618 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = AE51787A1AD52E9400FCD618;
 					};
 				};
 			};
@@ -176,7 +114,6 @@
 			projectRoot = "";
 			targets = (
 				AE51787A1AD52E9400FCD618 /* Simple Duration */,
-				AE51788A1AD52E9400FCD618 /* Simple DurationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -191,13 +128,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AE5178891AD52E9400FCD618 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -209,23 +139,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AE5178871AD52E9400FCD618 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AE5178921AD52E9400FCD618 /* Simple_DurationTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		AE51788D1AD52E9400FCD618 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AE51787A1AD52E9400FCD618 /* Simple Duration */;
-			targetProxy = AE51788C1AD52E9400FCD618 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AE5178841AD52E9400FCD618 /* MainMenu.xib */ = {
@@ -338,42 +252,6 @@
 			};
 			name = Release;
 		};
-		AE5178991AD52E9400FCD618 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Simple DurationTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Duration.app/Contents/MacOS/Simple Duration";
-			};
-			name = Debug;
-		};
-		AE51789A1AD52E9400FCD618 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Simple DurationTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Duration.app/Contents/MacOS/Simple Duration";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -391,14 +269,6 @@
 			buildConfigurations = (
 				AE5178961AD52E9400FCD618 /* Debug */,
 				AE5178971AD52E9400FCD618 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		AE5178981AD52E9400FCD618 /* Build configuration list for PBXNativeTarget "Simple DurationTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AE5178991AD52E9400FCD618 /* Debug */,
-				AE51789A1AD52E9400FCD618 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
