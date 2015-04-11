@@ -1,6 +1,8 @@
 # Simple-Duration
 A Menu Bar App that copies your working period to clipboard for Numbers
 
+![screenshot](screenshot.png)
+
 # Date Format
 The content inside the clipboard is formatted `08/04/2015  00h 00m`.
 
