@@ -1,6 +1,4 @@
-# Simple-Duration
-A Menu Bar App that copies your working period to clipboard for Numbers
-
+A very simple Menu Bar App that copies your working period to clipboard so you can paste it into Numbers/Word.
 ![screenshot](screenshot.png)
 
 # Date Format
