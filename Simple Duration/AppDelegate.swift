@@ -25,8 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   override func awakeFromNib() {
 
-    // can't access the constant inside NSStatusBar.h
-    //println(AppKit.NSVariableStatusItemLength)
+    // Workaround for linker bug  http://stackoverflow.com/a/24026327/279890
     let NSVariableStatusItemLength: CGFloat = -1.0;
 
     self.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
@@ -60,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let pboard = NSPasteboard.generalPasteboard()
     pboard.declareTypes([NSStringPboardType], owner: nil)
-    pboard.setString(str, forType: NSStringPboardType)
+    pboard.setString(str as String, forType: NSStringPboardType)
     
     button?.title = "Copied to Clipboard"
     var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
