@@ -55,11 +55,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     formatter.dateFormat = "dd/MM/yyyy" //"yyyy-MM-dd 'at' HH:mm"
     let today = formatter.stringFromDate(NSDate())
     
-    let str = NSString(format: "%@\t%@", today, formattedDuration)
+    let str = String(format: "%@\t%@", today, formattedDuration)
     
     let pboard = NSPasteboard.generalPasteboard()
     pboard.declareTypes([NSStringPboardType], owner: nil)
-    pboard.setString(str as String, forType: NSStringPboardType)
+    pboard.setString(str, forType: NSStringPboardType)
     
     button?.title = "Copied to Clipboard"
     var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
