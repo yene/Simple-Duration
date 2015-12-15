@@ -8,13 +8,14 @@
 
 import Cocoa
 
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
   var statusItem: NSStatusItem?
   var button: NSStatusBarButton?
   var started = false
-  var startTime : NSDate?
+  var startTime : NSDate = NSDate()
 
   func applicationDidFinishLaunching(aNotification: NSNotification) {
     // Insert code here to initialize your application
@@ -43,19 +44,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func stop(sender : AnyObject) {
     button?.enabled = false
-    
-    var duration: NSTimeInterval! = startTime?.timeIntervalSinceNow
-    duration = duration * -1
-    
-    let hrs: Double = duration / (60*60)
-    let min: Double = (duration / 60) % 60
-    let formattedDuration = NSString(format: "%02dh %02dm", Int(hrs), Int(min))
-    
-    let formatter = NSDateFormatter()
-    formatter.dateFormat = "dd/MM/yyyy" //"yyyy-MM-dd 'at' HH:mm"
-    let today = formatter.stringFromDate(NSDate())
-    
-    let str = String(format: "%@\t%@", today, formattedDuration)
+		
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "dd.MM.yyyy" //"yyyy-MM-dd 'at' HH:mm"
+    let today = dateFormatter.stringFromDate(NSDate())
+		
+		let timeFormatter = NSDateFormatter()
+		timeFormatter.dateFormat = "HH:mm"
+		let startStr = timeFormatter.stringFromDate(startTime)
+		let endStr = timeFormatter.stringFromDate(NSDate())
+		
+    let str = String(format: "%@\t%@\t%@", today, startStr, endStr)
     
     let pboard = NSPasteboard.generalPasteboard()
     pboard.declareTypes([NSStringPboardType], owner: nil)
@@ -70,6 +69,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     })
     
   }
+	
+	func timeSince(date: NSDate) -> String {
+		var duration: NSTimeInterval! = date.timeIntervalSinceNow
+		duration = duration * -1
+		
+		let hrs: Double = duration / (60*60)
+		let min: Double = (duration / 60) % 60
+		return String(format: "%02dh %02dm", Int(hrs), Int(min))
+	}
 
 }
 

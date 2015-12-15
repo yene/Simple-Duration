@@ -9,3 +9,6 @@ As mentioned on [stackoverflow](http://stackoverflow.com/a/26198173/279890) NSSt
 
 # Icon Format
 I used a simple script to cut an image into the required icon formats. https://gist.github.com/yene/1b5e980a1af28f4f5d37
+
+# TODO
+- [ ] Round to nearest 15 minutes

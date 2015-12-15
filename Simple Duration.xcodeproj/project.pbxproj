@@ -18,6 +18,7 @@
 		AE5178801AD52E9400FCD618 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE5178821AD52E9400FCD618 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AE5178851AD52E9400FCD618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AED4B2251C20A9CA0096AA28 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +35,7 @@
 		AE5178721AD52E9400FCD618 = {
 			isa = PBXGroup;
 			children = (
+				AED4B2251C20A9CA0096AA28 /* README.md */,
 				AE51787D1AD52E9400FCD618 /* Simple Duration */,
 				AE51787C1AD52E9400FCD618 /* Products */,
 			);
