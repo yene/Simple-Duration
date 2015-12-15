@@ -92,6 +92,8 @@
 		AE5178731AD52E9400FCD618 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Yannick Weiss";
 				TargetAttributes = {
@@ -271,6 +273,7 @@
 				AE5178971AD52E9400FCD618 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
