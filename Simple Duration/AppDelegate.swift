@@ -48,13 +48,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "dd.MM.yyyy" //"yyyy-MM-dd 'at' HH:mm"
     let today = dateFormatter.stringFromDate(NSDate())
+
+		var startHour = NSCalendar.currentCalendar().component(.Hour, fromDate: startTime)
+		var startMinute = NSCalendar.currentCalendar().component(.Hour, fromDate: startTime)
 		
-		let timeFormatter = NSDateFormatter()
-		timeFormatter.dateFormat = "HH:mm"
-		let startStr = timeFormatter.stringFromDate(startTime)
-		let endStr = timeFormatter.stringFromDate(NSDate())
-		
-    let str = String(format: "%@\t%@\t%@", today, startStr, endStr)
+		var currentHour = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
+		var currentMinute = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
+				
+    let str = String(format: "%@\t%02d:%02d\t%02d:%02d", today, startHour, startMinute, currentHour, currentMinute)
     
     let pboard = NSPasteboard.generalPasteboard()
     pboard.declareTypes([NSStringPboardType], owner: nil)
