@@ -10,6 +10,7 @@ import Cocoa
 
 
 @NSApplicationMain
+
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 	var statusItem: NSStatusItem?
@@ -98,6 +99,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			return(hours + 1, 0)
 		}
 	}
+	
+	func addQuitMenu() {
+		let menu: NSMenu = NSMenu()
+		let menuItem : NSMenuItem = NSMenuItem()
+		
+		menuItem.title = "Quit"
+		menuItem.target = self
+		menuItem.action = Selector("quit:")
+		menu.addItem(menuItem)
+		self.statusItem!.menu = menu
+		self.button?.performClick(self)
+		self.statusItem!.menu = nil
+	}
+	
+	func quit(sender: AnyObject) {
+		NSApplication.sharedApplication().terminate(self)
+	}
 
 }
 
+extension NSStatusBarButton {
+	override public func rightMouseDown(event: NSEvent) {
+		self.target?.addQuitMenu()
+	}
+}
