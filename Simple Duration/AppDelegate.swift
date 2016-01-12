@@ -50,15 +50,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		dateFormatter.dateFormat = "dd.MM.yyyy" //"yyyy-MM-dd 'at' HH:mm"
 		let today = dateFormatter.stringFromDate(NSDate())
 
-		var startHour = NSCalendar.currentCalendar().component(.Hour, fromDate: startTime)
-		var startMinute = NSCalendar.currentCalendar().component(.Hour, fromDate: startTime)
-		(startHour, startMinute) = roundTime(startHour, minutes: startMinute)
+		let startHour = NSCalendar.currentCalendar().component(.Hour, fromDate: startTime)
+		let startMinute = NSCalendar.currentCalendar().component(.Minute, fromDate: startTime)
 		
-		
-		var currentHour = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
-		var currentMinute = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
-		(currentHour, currentMinute) = roundTime(currentHour, minutes: currentMinute)
-
+		let currentHour = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
+		let currentMinute = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
 
 		let str = String(format: "%@\t%02d:%02d\t%02d:%02d", today, startHour, startMinute, currentHour, currentMinute)
 
@@ -83,21 +79,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let hrs: Double = duration / (60 * 60)
 		let min: Double = (duration / 60) % 60
 		return String(format: "%02dh %02dm", Int(hrs), Int(min))
-	}
-
-	func roundTime(hours: Int, minutes: Int) -> (Int, Int) {
-		switch (minutes) {
-		case 0..<7:
-			return(hours, 0)
-		case 7..<22:
-			return(hours, 15)
-		case 22..<37:
-			return(hours, 30)
-		case 37..<52:
-			return(hours, 45)
-		default:
-			return(hours + 1, 0)
-		}
 	}
 	
 	func addQuitMenu() {
