@@ -33,13 +33,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		self.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
 		self.button = self.statusItem?.button
 		self.button?.title = "Start"
-		self.button?.action = "start:"
+		self.button?.action = #selector(AppDelegate.start(_:))
 		self.button?.target = self
 	}
 
 	func start(sender : AnyObject) {
 		button?.title = "Stop"
-		button?.action = "stop:"
+		button?.action = #selector(AppDelegate.stop(_:))
 		startTime = NSDate()
 	}
 
@@ -67,7 +67,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		dispatch_after(dispatchTime, dispatch_get_main_queue(), {
 				self.button?.enabled = true
 				self.button?.title = "Start"
-				self.button?.action = "start:"
+				self.button?.action = #selector(AppDelegate.start(_:))
 			})
 
 	}
@@ -87,13 +87,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let wakeupMenuItem : NSMenuItem = NSMenuItem()
         wakeupMenuItem.title = "Copy last wakeup"
         wakeupMenuItem.target = self
-        wakeupMenuItem.action = Selector("lastWakeup:")
+        wakeupMenuItem.action = #selector(AppDelegate.lastWakeup(_:))
         menu.addItem(wakeupMenuItem)
         
 		let quitMenuItem : NSMenuItem = NSMenuItem()
 		quitMenuItem.title = "Quit"
 		quitMenuItem.target = self
-		quitMenuItem.action = Selector("quit:")
+		quitMenuItem.action = #selector(AppDelegate.quit(_:))
 		menu.addItem(quitMenuItem)
         
 		self.statusItem!.menu = menu
