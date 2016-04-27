@@ -81,14 +81,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		return String(format: "%02dh %02dm", Int(hrs), Int(min))
 	}
 	
-	func addQuitMenu() {
+	func addMenu() {
 		let menu: NSMenu = NSMenu()
-		let menuItem : NSMenuItem = NSMenuItem()
-		
-		menuItem.title = "Quit"
-		menuItem.target = self
-		menuItem.action = Selector("quit:")
-		menu.addItem(menuItem)
+        
+        let wakeupMenuItem : NSMenuItem = NSMenuItem()
+        wakeupMenuItem.title = "Copy last wakeup"
+        wakeupMenuItem.target = self
+        wakeupMenuItem.action = Selector("lastWakeup:")
+        menu.addItem(wakeupMenuItem)
+        
+		let quitMenuItem : NSMenuItem = NSMenuItem()
+		quitMenuItem.title = "Quit"
+		quitMenuItem.target = self
+		quitMenuItem.action = Selector("quit:")
+		menu.addItem(quitMenuItem)
+        
 		self.statusItem!.menu = menu
 		self.button?.performClick(self)
 		self.statusItem!.menu = nil
@@ -97,11 +104,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func quit(sender: AnyObject) {
 		NSApplication.sharedApplication().terminate(self)
 	}
+    
+    func lastWakeup(sender: AnyObject) {
+        // http://blog.nottoobadsoftware.com/swiftshell/how-to-use-swift-for-shell-scripting/
+        let cmd = "pmset -g log | grep \" Wake\" | tail -n 1 | awk '{print $2}' | pbcopy"
+        NSTask.launchedTaskWithLaunchPath("/bin/bash", arguments:["-c", cmd]).waitUntilExit()
+    }
 
 }
 
 extension NSStatusBarButton {
 	override public func rightMouseDown(event: NSEvent) {
-		self.target?.addQuitMenu()
+		self.target?.addMenu()
 	}
 }
