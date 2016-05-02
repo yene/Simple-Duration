@@ -107,7 +107,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func lastWakeup(sender: AnyObject) {
         // http://blog.nottoobadsoftware.com/swiftshell/how-to-use-swift-for-shell-scripting/
-        let cmd = "pmset -g log | grep \" Wake\" | tail -n 1 | awk '{print $2}' | pbcopy"
+        let cmd = "pmset -g log | grep \" Wake\" | tail -n 1 | awk '{if($2 != \"since\") print $2; else print $6; }' | pbcopy"
         NSTask.launchedTaskWithLaunchPath("/bin/bash", arguments:["-c", cmd]).waitUntilExit()
     }
 
