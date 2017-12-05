@@ -106,9 +106,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
     
     func lastWakeup(_ sender: AnyObject) {
-        // http://blog.nottoobadsoftware.com/swiftshell/how-to-use-swift-for-shell-scripting/
-        let cmd = "pmset -g log | grep \" Wake\" | tail -n 1 | awk '{if($2 != \"since\") print $2; else print $6; }' | pbcopy"
-        Process.launchedProcess(launchPath: "/bin/bash", arguments:["-c", cmd]).waitUntilExit()
+        let cmd = "pmset -g log | grep \" Wake\" | tail -n 1 | awk '{if($2 != \"since\") print $2; else print $6; }'"
+		let task = Process.init()
+		task.launchPath = "/bin/bash"
+		task.arguments = ["-c", cmd]
+		let pipe = Pipe()
+		task.standardOutput = pipe
+		task.standardError = pipe
+		task.launch()
+		task.waitUntilExit()
+		let data = pipe.fileHandleForReading.readDataToEndOfFile()
+		let output: String = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
+		let dateTimeStarted = output.trimmingCharacters(in: CharacterSet.newlines)
+		
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "dd.MM.yyyy" //"yyyy-MM-dd 'at' HH:mm"
+		let today = dateFormatter.string(from: Date())
+		let str = String(format: "%@\t%@", today, dateTimeStarted)
+		
+		let pboard = NSPasteboard.general()
+		pboard.declareTypes([NSStringPboardType], owner: nil)
+		pboard.setString(str, forType: NSStringPboardType)
     }
 
 }
