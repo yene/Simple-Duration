@@ -30,20 +30,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		// Workaround for linker bug  http://stackoverflow.com/a/24026327/279890
 		let NSVariableStatusItemLength: CGFloat = -1.0;
 
-		self.statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+		self.statusItem = NSStatusBar.system.statusItem(withLength: NSVariableStatusItemLength)
 		self.button = self.statusItem?.button
 		self.button?.title = "Start"
 		self.button?.action = #selector(AppDelegate.start(_:))
 		self.button?.target = self
 	}
 
-	func start(_ sender : AnyObject) {
+	@objc func start(_ sender : AnyObject) {
 		button?.title = "Stop"
 		button?.action = #selector(AppDelegate.stop(_:))
 		startTime = Date()
 	}
 
-	func stop(_ sender : AnyObject) {
+	@objc func stop(_ sender : AnyObject) {
 		button?.isEnabled = false
 
 		let dateFormatter = DateFormatter()
@@ -58,9 +58,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 		let str = String(format: "%@\t%02d:%02d\t%02d:%02d", today, startHour, startMinute, currentHour, currentMinute)
 
-		let pboard = NSPasteboard.general()
-		pboard.declareTypes([NSStringPboardType], owner: nil)
-		pboard.setString(str, forType: NSStringPboardType)
+		let pboard = NSPasteboard.general
+		pboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+		pboard.setString(str, forType: NSPasteboard.PasteboardType.string)
 
 		button?.title = "Copied to Clipboard"
 		let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -101,11 +101,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		self.statusItem!.menu = nil
 	}
 	
-	func quit(_ sender: AnyObject) {
-		NSApplication.shared().terminate(self)
+	@objc func quit(_ sender: AnyObject) {
+		NSApplication.shared.terminate(self)
 	}
     
-    func lastWakeup(_ sender: AnyObject) {
+	@objc func lastWakeup(_ sender: AnyObject) {
         let cmd = "pmset -g log | grep \" Wake\" | tail -n 1 | awk '{if($2 != \"since\") print $2; else print $6; }'"
 		let task = Process.init()
 		task.launchPath = "/bin/bash"
@@ -124,15 +124,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let today = dateFormatter.string(from: Date())
 		let str = String(format: "%@\t%@", today, dateTimeStarted)
 		
-		let pboard = NSPasteboard.general()
-		pboard.declareTypes([NSStringPboardType], owner: nil)
-		pboard.setString(str, forType: NSStringPboardType)
+		let pboard = NSPasteboard.general
+		pboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+		pboard.setString(str, forType: NSPasteboard.PasteboardType.string)
     }
 
 }
 
 extension NSStatusBarButton {
 	override open func rightMouseDown(with event: NSEvent) {
-		self.target?.addMenu()
+		if let t = self.target as? AppDelegate {
+			t.addMenu()
+		}
 	}
 }
